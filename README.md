@@ -42,6 +42,8 @@ Results:               precision    recall  f1-score   support
  
 From this, We can observe that these results are actually very similar to the results of the classification report with no weights included, meaning that this did not solve the problem and the data being imbalanced is not the problem.
 
-One thing the recall problem could be is me freezing the resnet layers. Me fr
+One thing the recall problem could be is the ResNet hidden layers being frozen. As the ResNet model was trained with millions of random images in various categories, however because of this, the features of different X-ray images may not be picked up effectively in the last layers of the model, especially the output layer.
+
+The fix - I am going to unfreeze the backbone layers
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
