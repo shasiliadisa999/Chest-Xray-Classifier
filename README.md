@@ -44,6 +44,18 @@ From this, We can observe that these results are actually very similar to the re
 
 One thing the recall problem could be is the ResNet hidden layers being frozen. As the ResNet model was trained with millions of random images in various categories, however because of this, the features of different X-ray images may not be picked up effectively in the last layers of the model, especially the output layer.
 
-The fix - I am going to unfreeze the backbone layers
+The fix - I am going to unfreeze the backbone layers to make sure the layers are actually learning the different features from the X-rays. However, before doing this I need to make sure the layers are still frozen whilst intitalizing the output head and its parameters, to ensure that it wont pass noise into the backbone and compute wild gradients. For the output layer, I will only run this for 3 epochs as its just a single layer, and 5 epochs for the backbone to prevent overfitting.
+
+Results:               precision    recall  f1-score   support
+
+      normal           0.99         0.61      0.75       234
+   pneumonia           0.81         0.99      0.89       390
+
+    accuracy                                 0.85       624
+   macro avg           0.90        0.80      0.82       624
+weighted avg           0.88        0.85      0.84       624
+
+
+From these results, I can see that there is improvement overall, has the precision for normal class and recall for pneumonia is almost perfect. The normal recall still isn't good enough however it is moving in the right direction with a 0.03 increase. Overall, we can see the model is biased towards pneumonia.
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
