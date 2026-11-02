@@ -58,4 +58,6 @@ weighted avg           0.88        0.85      0.84       624
 
 From these results, I can see that there is improvement overall, has the precision for normal class and recall for pneumonia is almost perfect. The normal recall still isn't good enough however it is moving in the right direction with a 0.03 increase. Overall, we can see the model is biased towards pneumonia.
 
+The average loss of the model is low, and the test aren't great, which typically indicates overfitting. Also, the problem could be related to 
+
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
