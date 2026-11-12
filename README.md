@@ -58,6 +58,12 @@ weighted avg           0.88        0.85      0.84       624
 
 From these results, I can see that there is improvement overall, has the precision for normal class and recall for pneumonia is almost perfect. The normal recall still isn't good enough however it is moving in the right direction with a 0.03 increase. Overall, we can see the model is biased towards pneumonia.
 
-The average loss of the model is low, and the test aren't great, which typically indicates overfitting. Also, the problem could be related to 
+The average loss of the model is low, and the test aren't great, which typically indicates overfitting.
+
+Update- the small increase in normal recall was because I didn't set a random seed, recall for the normal class is 60%.
+In the context of a medical screening tool, this is the better trade-off compared to the pneumonia recall being 60%, as that would mean that 40% of patients suffering with pneumonia would be told that their chest x-rays are normal, leading to worsening health complications.
+
+So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely, or there is a difference between the training images vs the test images
+
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
