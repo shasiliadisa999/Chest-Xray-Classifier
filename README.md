@@ -68,4 +68,4 @@ So I think the problem points to one of two problems: There is overfitting and t
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
 
-images/my_plot.png
+![Confusion matrix on the test set](images/my_plot.png)
