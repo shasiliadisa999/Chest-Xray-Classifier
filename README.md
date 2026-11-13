@@ -1,7 +1,7 @@
 # Chest-Xray-Classifier
 NN resnet which detects whether or not someone has pneumonia from an Xray of their chest.
 
-## Status - Work in progress, currently fixing errors which i suspect is related to data leakage (as the average loss from training is extremely low) and the classification report, as only.
+## Status - Work in progress, currentlyfixing.
 -Update - now fixing recall problem with the normal class.
 
 Dataset -> Chest X-Ray Images (Pneumonia), link on line below
@@ -63,7 +63,7 @@ The average loss of the model is low, and the test aren't great, which typically
 Update- the small increase in normal recall was because I didn't set a random seed, recall for the normal class is 60%.
 In the context of a medical screening tool, this is the better trade-off compared to the pneumonia recall being 60%, as that would mean that 40% of patients suffering with pneumonia would be told that their chest x-rays are normal, leading to worsening health complications.
 
-So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely, or there is a difference between the training images vs the test images
+So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely, or there is a difference between the training images vs the test images.
 
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
