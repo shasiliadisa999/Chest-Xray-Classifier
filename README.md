@@ -80,4 +80,4 @@ If Validation is good and test results are poor, problem is the test images are 
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
 
-![Confusion matrix on the test set](images/my_plot.png)
+
