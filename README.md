@@ -74,6 +74,8 @@ Now to see what the problem is out of the two I proposed I will test for validat
 If Validation results are poor and test results are poor, the problem is overfitting.
 If Validation is good and test results are poor, problem is the test images are different to the training and validation
 
+![Confusion matrix on the test set](images/validation_plot.png)
+![Confusion matrix on the test set](images/testing_plot.png)
 
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
