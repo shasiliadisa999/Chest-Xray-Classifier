@@ -63,7 +63,10 @@ The average loss of the model is low, and the test aren't great, which typically
 Update- the small increase in normal recall was because I didn't set a random seed, recall for the normal class is 60%.
 In the context of a medical screening tool, this is the better trade-off compared to the pneumonia recall being 60%, as that would mean that 40% of patients suffering with pneumonia would be told that their chest x-rays are normal, leading to worsening health complications.
 
-So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely, or there is a difference between the training images vs the test images.
+Initially I believed one of the issues could've been a class imbalance with the data, however this can not be the case as recall is computed within a single class, different to precision which is calculated across the two classes, so the proportion of images is not the problem.
+
+
+So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely (due to the accuracy being 85% and average loss being low), or there is a difference between the training images vs the test images. These issues are not mutually exclusive, as the model could still be overfitting to the training set and not do well on the test set, as I wouldnt know how different the two sets of images are
 
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
