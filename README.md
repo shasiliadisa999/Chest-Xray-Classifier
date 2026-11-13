@@ -66,7 +66,14 @@ In the context of a medical screening tool, this is the better trade-off compare
 Initially I believed one of the issues could've been a class imbalance with the data, however this can not be the case as recall is computed within a single class, different to precision which is calculated across the two classes, so the proportion of images is not the problem.
 
 
-So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely (due to the accuracy being 85% and average loss being low), or there is a difference between the training images vs the test images. These issues are not mutually exclusive, in fact, 
+So I think the problem points to one of two problems: There is overfitting and the model is training the pneumonia x ray images too closely (due to the accuracy being 85% and average loss being low), or there is a difference between the training images vs the test images. These issues are not mutually exclusive.
+
+One fix now I will make is actually splitting the training data between training data validation in a 85/15 split.
+Now to see what the problem is out of the two I proposed I will test for validation and test data:
+
+If Validation results are poor and test results are poor, the problem is overfitting.
+If Validation is good and test results are poor, problem is the test images are different to the training and validation
+
 
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
