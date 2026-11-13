@@ -77,6 +77,7 @@ If Validation is good and test results are poor, problem is the test images are 
 ![Confusion matrix on the test set](images/validation_plot.png)
 ![Confusion matrix on the test set](images/testing_plot.png)
 
+To get to the root of the problem now, I will look at some of the images from the original training dataset before splitting.
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
 
