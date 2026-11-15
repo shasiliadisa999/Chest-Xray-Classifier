@@ -79,12 +79,17 @@ If Validation is good and test results are poor, problem is the test images are 
 
 To get to the root of the problem now, I will look at some of the images from the original training dataset before splitting.
 
-![File paths for the different images in the normal class](images/Screenshot 2026-11-15 191422.png)
-
-Here you can see there are repeats of patients 1000,1003,1004,1005,1010. This means that there is most likely a data leakage, as there is probably the same copies across the training and validation splits. So, I need to implement a patient-level split ensuring the same patient's x-rays are on one split and not in both.
 
 
+
+
+
+Down below you can see there are repeats of patients 1000,1003,1004,1005,1010. This means that there is most likely a data leakage, as there is probably the same copies across the training and validation splits. This is whats causing the normal class recall to be inflated during training and validation but perform poorly during testing, as the model can just remember what the last image from the same patient looked like, and conclude it is the same class without actually inspecting the features.. So, I need to implement a patient-level split ensuring the same patient's x-rays are on one split and not in both.
+
+*insert xray path image here*
+
+Here is another image of some of the imgs attribute of the ImageFolder object total_train_ds, showing the image's file path what class it is in and contains sequences of 4 digit numbers. From inference, the first 4 digits sequence appears to be a unique number assigned to each image, a patient ID number if you will. Then the path is typically followed by 0001 for images, where some are then followed by 0002 (still not quite sure what that means), and the unique number is preceded by the letters 'IM'. The main point of analysing this attribute is to inspect this unique number. If we can find two images with the same number, we can make sure that the two images are kept in the same split and not mixed into both. Now, some of the images have the same patient id, but one is marked 'IM' and the other 'NORMAL2'. Although I'm not sure what this discrepancy means, I will still put those images in the same class as that is much better than putting them into different classes.
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
-
+**DO NOT RUN YET**
 
