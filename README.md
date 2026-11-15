@@ -81,7 +81,9 @@ To get to the root of the problem now, I will look at some of the images from th
 
 *insert xray screenshot*
 
-Here you can see there are repeats of patients 1000,1003,1004,1005,1010. This means that there is most likely a data leakage, as there is probably the same copies in the training and validation splits. So, I need to implement a patient-level split ensuring the same patient's x-rays are on one split and not in both.
+Here you can see there are repeats of patients 1000,1003,1004,1005,1010. This means that there is most likely a data leakage, as there is probably the same copies across the training and validation splits. So, I need to implement a patient-level split ensuring the same patient's x-rays are on one split and not in both.
+
+
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
 
