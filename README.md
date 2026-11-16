@@ -1,24 +1,40 @@
-# Chest-Xray-Classifier
-NN resnet which detects whether or not someone has pneumonia from an Xray of their chest.
+# Chest Xray Classifier
+NN resnet model which detects whether or not someone has pneumonia from an Xray of their chest, where I investigated why the model was misclassifying so many normal class x-ray images as pneumonia x-rays, causing low normal recall score.
 
-## Status - Work in progress, currentlyfixing.
--Update - now fixing recall problem with the normal class.
-
-Dataset -> Chest X-Ray Images (Pneumonia), link on line below
+# Dataset -> Chest X-Ray Images (Pneumonia), link on line below
 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 5,863 images
 
-Results:               precision    recall  f1-score   support
+# Final results
+![Confusion matrix of validation data](images/final_validation_plot.png)
+           precision    recall  f1-score   support
 
-                  normal       0.38      1.00      0.55       234
-               pneumonia       0.00      0.00      0.00       390
+Normal       0.97      0.96      0.97       203
+Pneumonia    0.99      0.99      0.99       594
 
-               accuracy                           0.38       624
-               macro avg       0.19      0.50      0.27       624
-            weighted avg       0.14      0.38      0.20       624
+accuracy                          0.98       797
+macro avg     0.98      0.98      0.98       797
+weighted avg  0.98      0.98      0.98       797
+
+![Confusion matrix of test data](images/final_test_plot.png)
+             precision    recall  f1-score   support
+
+ Normal       0.99      0.59      0.74       234
+ Pneumonia    0.80      0.99      0.89       390
+
+ accuracy                         0.84       624
+ macro avg    0.89      0.79      0.82       624
+ weighted avg 0.87      0.84      0.83       624
+
+# Note
+Normal recall is around 0.59-0.62
+
+# Key Findings
+Model adapts well to unseen images from validation, scoring 98% on the normal class, but drops to around 60% on the test set. Patient leakage and overfitting is ruled out, and is down to the test images differing from the training and validation images.
 
 
-Update - the bug turned about to be a data input issue, where the training data wasn't getting the data it should've been getting due to me inputting the wrong path. Here is the updates results from the classification report:
+# Investigation
+
 
 Results:              precision    recall  f1-score   support
 
@@ -83,6 +99,9 @@ Here is another image of some of the imgs attribute of the ImageFolder object to
 
 
 
+# Limitations
+
+Final results are from a single run and will slightly change after running again due to GPU non determinism, even after setting random seed.
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
 **DO NOT RUN YET**
