@@ -17,7 +17,7 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
    macro avg       0.98      0.98      0.98       797
 weighted avg       0.98      0.98      0.98       797
 ```
-![Confusion matrix of test data](images/final_test_plot.png)
+![Confusion matrix of test data](images/final_testing_plot.png)
 ```
              precision    recall  f1-score   support
 
