@@ -7,6 +7,7 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
 # Final results
 ![Confusion matrix of validation data](images/final_validation_plot.png)
+ VALIDATION
  ```
               precision    recall  f1-score   support
 
@@ -18,6 +19,7 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 weighted avg       0.98      0.98      0.98       797
 ```
 ![Confusion matrix of test data](images/final_testing_plot.png)
+TESTING
 ```
              precision    recall  f1-score   support
 
@@ -29,10 +31,10 @@ weighted avg       0.98      0.98      0.98       797
 weighted avg       0.87      0.84      0.83       624
 ```
 # Note
-Normal recall is around 0.59-0.62
+Normal recall is around 0.59-0.62 across test runs.
 
 # Key Findings
-Model adapts well to unseen images from validation, scoring 98% on the normal class, but drops to around 60% on the test set. Patient leakage and overfitting is ruled out, and is down to the test images differing from the training and validation images.
+Model adapts well to unseen images from validation, scoring 96% on the normal class, but drops to around 60% on the test set. Found there to be strong evidence that there is no patient leakage or overfitting, and evidence points to test images differing from training and validation images, as model generalises well to new patients from the exact same source.
 
 
 # Investigation
@@ -102,6 +104,13 @@ Here is another image of some of the imgs attribute of the ImageFolder object to
 
 ![filenames](images/Screenshot_2026-11-15_191422.png)
 
+Now to check if patient leakage is inflating scores, I will implement a patient split instead of a random split. This will be done by taking those unique patient id's from the filenames and using the GroupShuffleSplit function from scikit-learn to organise them into training and validation splits in terms of their indices.  BY doing so, we can now get the corresponding index to the id from the patient_ids variable. Now we have the image and its path from the dataset and its index, to then create different subsets for training and validation and use it for training. 
+
+This time, I expect the normal recall for validation to decrease, as it would mean the model isnt taking shortcuts to classify images.
+
+After running, validation normal recall is still 0.96-0.98, meaning that the patient leakage across splits didnt actually affect scores.
+
+Therefore, I can confidently conclude that there are differences between the training and test images.
 
 
 # Limitations
@@ -109,5 +118,5 @@ Here is another image of some of the imgs attribute of the ImageFolder object to
 Final results are from a single run and will slightly change after running again due to GPU non determinism, even after setting random seed.
 
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
-**DO NOT RUN YET**
+
 
