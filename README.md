@@ -117,6 +117,9 @@ Therefore, I can confidently conclude that there are differences between the tra
 
 Final results are from a single run and will slightly change after running again due to GPU non determinism, even after setting random seed.
 
+#Next Steps
+Add GRAD-CAM then cross-dataset generalisation
+
 How to run -> Open pneumoniaV2.ipynb as a kaggle notebook, uploading from github, then attach corresponding dataset and run all cells.
 
 
