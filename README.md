@@ -7,24 +7,24 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
 # Final results
 ![Confusion matrix of validation data](images/final_validation_plot.png)
-           precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
-Normal       0.97      0.96      0.97       203
-Pneumonia    0.99      0.99      0.99       594
+      Normal       0.97      0.96      0.97       203
+   Pneumonia       0.99      0.99      0.99       594
 
-accuracy                          0.98       797
-macro avg     0.98      0.98      0.98       797
-weighted avg  0.98      0.98      0.98       797
+    accuracy                           0.98       797
+   macro avg       0.98      0.98      0.98       797
+weighted avg       0.98      0.98      0.98       797
 
 ![Confusion matrix of test data](images/final_test_plot.png)
              precision    recall  f1-score   support
 
- Normal       0.99      0.59      0.74       234
- Pneumonia    0.80      0.99      0.89       390
+      Normal       0.99      0.59      0.74       234
+   Pneumonia       0.80      0.99      0.89       390
 
- accuracy                         0.84       624
- macro avg    0.89      0.79      0.82       624
- weighted avg 0.87      0.84      0.83       624
+    accuracy                           0.84       624
+   macro avg       0.89      0.79      0.82       624
+weighted avg       0.87      0.84      0.83       624
 
 # Note
 Normal recall is around 0.59-0.62
@@ -62,7 +62,7 @@ One thing the recall problem could be is the ResNet hidden layers being frozen. 
 
 The fix - I am going to unfreeze the backbone layers to make sure the layers are actually learning the different features from the X-rays. However, before doing this I need to make sure the layers are still frozen whilst intitalizing the output head and its parameters, to ensure that it wont pass noise into the backbone and compute wild gradients. For the output layer, I will only run this for 3 epochs as its just a single layer, and 5 epochs for the backbone to prevent overfitting.
 
-Results:               precision    recall  f1-score   support
+'''Results:               precision    recall  f1-score   support
 
       normal           0.99         0.61      0.75       234
    pneumonia           0.81         0.99      0.89       390
@@ -70,6 +70,7 @@ Results:               precision    recall  f1-score   support
     accuracy                                 0.85       624
    macro avg           0.90        0.80      0.82       624
 weighted avg           0.88        0.85      0.84       624
+'''
 
 
 From these results, I can see that there is improvement overall, has the precision for normal class and recall for pneumonia is almost perfect. The normal recall still isn't good enough however it is moving in the right direction with a 0.03 increase. Overall, we can see the model is biased towards pneumonia.
